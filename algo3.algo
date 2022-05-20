@@ -1,0 +1,59 @@
+PROCEDURE dot product (v1,v2:ARRAY_OF INTEGER, var ps:INTEGER )
+VAR
+    i:integer:=0;
+
+BEGIN
+   
+    IF (v1.length<>v2.length) THEN
+         write("v1 and v2 are different we cannot calculate the dot product  ")
+    ELSE
+    FOR i FROM 0 TO  v1.length-1 step 1 DO
+
+        read(v2[i]);
+    read(v1[i]);
+    ps:= ps + (v1[i]*v2[i]);
+        write("the dot product of v1 and v2 is equal to ",ps);
+    END_IF
+END
+
+FUNCTION dot product( v1,v2:ARRAY_OF INTEGER, var ps:INTEGER ) : INTEGER
+VAR
+i:integer:=0;
+    
+BEGIN
+
+REPEAT
+   IF (v1.length<>v2.length) THEN
+   return NAN;
+    ELSE
+    FOR i FROM 0 TO  v1.length-1 step 1 DO
+
+        read(v2[i]);
+    read(v1[i]);
+    ps:= ps + (v1[i]*v2[i]);
+        return ps;
+    END_IF
+//with procedure
+
+ALGORITHM orthogonal 
+VAR
+   u,v: ARRAY_OF INTEGER;
+    ps:integer:=0;
+BEGIN
+REPEAT
+    orthogonal (u,v)
+UNTIL (ps=0)
+END
+//with function 
+ALGORITHM orthogonal 
+VAR
+   u,v: ARRAY_OF INTEGER;
+    ps:integer:=0;
+    res:integer;
+BEGIN
+res:=orthogonal(u,v);
+IF (res=0) THEN
+    write("u and v are orthogonal and the dot product is equal to ",res );
+END_IF
+
+END
